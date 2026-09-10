@@ -1,0 +1,19 @@
+{
+  "name": "cloud-browser",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Chromium",
+      "protocol": "http",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postStartCommand": "until docker info >/dev/null 2>&1; do sleep 1; done; docker start chromium 2>/dev/null || docker run -d --name chromium --shm-size=1gb -p 3000:3000 -e TZ=Europe/Paris lscr.io/linuxserver/chromium:latest"
+}
