@@ -39,7 +39,7 @@ Tu ne seras jamais facture sans l'avoir demande.
 ## Si ca bug
 
 - **Page blanche ou erreur** : attends 30 s, rafraichis.
-- **Tu as ferme Chromium par erreur** : rafraichis l'onglet.
+- **Tu as ferme Chromium par erreur** : Click droit > Chromium sinon rafraichis l'onglet.
 - **Autre** : demande a Matheo.
 
 Ne passe jamais le port en **Public** dans l'onglet Ports.
