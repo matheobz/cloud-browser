@@ -1,5 +1,7 @@
 # cloud-browser
 
+> Tu veux juste l'utiliser ? Lis le [GUIDE](GUIDE.md), pas a pas, sans jargon.
+
 Un Chromium complet qui tourne dans un GitHub Codespace, accessible depuis un onglet de ton navigateur.
 Le trafic web sort du serveur GitHub, pas de ton reseau local.
 
