@@ -7,7 +7,7 @@
     }
   },
   "hostRequirements": {
-    "cpus": 2
+    "cpus": 4
   },
   "forwardPorts": [
     3000
