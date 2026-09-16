@@ -31,6 +31,47 @@ historique sont conserves.
 - `./scripts/logs.sh` : logs du conteneur en direct.
 - `./scripts/reset-browser.sh` : repart d'un profil vierge (supprime et recree le conteneur).
 
+### Ou lancer les commandes
+
+Trois niveaux sont empiles, ne les confonds pas :
+
+1. **Le codespace** : la machine Linux avec VS Code. C'est ici que vit ce repo et que
+   tournent `git` et les scripts. Terminal : menu *Terminal > New Terminal*.
+2. **Le conteneur `chromium`** : lance par le codespace, il contient le navigateur.
+   Tu n'as normalement jamais besoin d'y entrer.
+3. **Chromium** : ce que tu vois dans l'onglet du port 3000.
+
+Toutes les commandes de ce README se lancent au **niveau 1**, dans le terminal VS Code
+du codespace. Jamais dans Chromium.
+
+## Piloter un autre PC depuis ce navigateur
+
+Ce Chromium peut servir de rebond vers un service de bureau a distance (Chrome Remote
+Desktop ou autre) quand le poste d'ou tu pars bloque ces sites. La chaine devient :
+poste de depart > codespace > Chromium > bureau a distance > PC cible.
+
+Pour appliquer un changement de config (clavier, options du conteneur), depuis le
+terminal VS Code du codespace :
+
+```bash
+git fetch origin <branche>
+git checkout <branche>
+./scripts/reset-browser.sh
+```
+
+Le conteneur est recree : le profil Chromium est perdu, il faut se reconnecter aux comptes.
+
+Deux limites a connaitre :
+
+- **Le clavier.** La disposition du conteneur (`KEYBOARD`) doit correspondre a celle du
+  PC cible, sinon les touches sortent decalees. Voir la section Depannage.
+- **La latence.** Tu additionnes deux trajets reseau et deux encodages video. Compte
+  100 ms au mieux, et baisser la qualite de l'image n'y changera rien : c'est du temps
+  de trajet, pas du calcul. Verifie au moins que le codespace est proche de toi avec
+  `curl -s ipinfo.io` : en Europe c'est optimal, aux Etats-Unis tu ajoutes deux
+  traversees de l'Atlantique. La region se change sur
+  https://github.com/settings/codespaces et ne vaut que pour les **nouveaux** codespaces.
+
 ## Depannage
 
 **Ecran noir, deconnexions, page qui ne charge pas**
