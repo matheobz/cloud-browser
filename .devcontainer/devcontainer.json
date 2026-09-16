@@ -19,5 +19,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postStartCommand": "until docker info >/dev/null 2>&1; do sleep 1; done; docker start chromium 2>/dev/null || docker run -d --name chromium --shm-size=1gb -p 3000:3000 -e TZ=Europe/Paris lscr.io/linuxserver/chromium:latest"
+  "postStartCommand": "until docker info >/dev/null 2>&1; do sleep 1; done; docker start chromium 2>/dev/null || docker run -d --name chromium --shm-size=1gb -p 3000:3000 -e TZ=Europe/Paris -e KEYBOARD=fr-fr-azerty lscr.io/linuxserver/chromium:latest"
 }

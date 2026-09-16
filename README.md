@@ -43,6 +43,20 @@ et 3001 en HTTPS) :
 - dans `.devcontainer/devcontainer.json`, mets `"forwardPorts": [3001]` et
   `"portsAttributes"` sur `"3001"` avec `"protocol": "https"`.
 
+**Clavier QWERTY quand tu pilotes une autre machine (bureau a distance)**
+
+Le conteneur demarre avec la disposition clavier definie par `KEYBOARD` (ici `fr-fr-azerty`).
+
+Taper directement dans Chromium fonctionne quelle que soit cette valeur : KasmVNC transmet
+des caracteres. Mais un client de bureau a distance ouvert dans Chromium transmet des
+*positions* de touches, et ces positions viennent de la disposition du conteneur. Si elle
+ne correspond pas a celle de la machine pilotee, les touches sortent decalees (a/q, z/w...).
+
+La variable n'est lue qu'a la creation du conteneur. Apres l'avoir changee, lance
+`./scripts/reset-browser.sh` : le profil Chromium est perdu, il faut se reconnecter aux comptes.
+
+Valeurs possibles dans la doc linuxserver.io (`de-de-qwertz`, `it-it-qwerty`, ...).
+
 **Onglets Chromium qui crashent**
 
 Ajoute `--security-opt seccomp=unconfined` au `docker run` (dans `postStartCommand` et dans

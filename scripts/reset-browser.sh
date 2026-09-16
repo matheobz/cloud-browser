@@ -9,6 +9,7 @@ docker run -d \
   --shm-size=1gb \
   -p 3000:3000 \
   -e TZ=Europe/Paris \
+  -e KEYBOARD=fr-fr-azerty \
   lscr.io/linuxserver/chromium:latest
 
 echo "Conteneur chromium recree. Ouvre le port 3000."
